@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class App {
     public static final double DESCUENTO_COMPRA_SUPERIOR = 10;/*SOLO SI LA COMPRA SUPERA 100K */
     public static final double IVA = 19; /*IVA DEL 19%* SE USA CON EL VALOR YA CON EL DESCUENTO*/
@@ -7,4 +9,37 @@ public class App {
     public static int cantidadArticulos = 0;
     public static double compraTotal = 0;
     public static int productosPremium = 0;
+
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        int opcion;
+        do {
+            System.out.println("=== Bienvenido al menú que productos deseas comprar?: ==== \n"
+            + "1. Producto Básico - $" + PRECIO_PRODUCTO_BASICO + "\n"
+            + "2. Producto Medio - $" + PRECIO_PRODUCTO_MEDIO + "\n"
+            + "3. Producto Premium - $" + PRECIO_PRODUCTO_PREMIUM + "\n"
+            + "4. Finalizar compra\n"
+            + "Elija una opción: ");
+            opcion = leer.nextInt();
+
+            if (opcion == 1) {
+                compraTotal += PRECIO_PRODUCTO_BASICO;
+                cantidadArticulos ++;
+                System.out.println("Llevas: $" + compraTotal);            
+            } else if (opcion == 2) {
+                compraTotal += PRECIO_PRODUCTO_MEDIO;
+                cantidadArticulos ++;
+                System.out.println("Llevas: $" + compraTotal);
+            } else if (opcion == 3) {
+                compraTotal += PRECIO_PRODUCTO_PREMIUM;
+                cantidadArticulos ++;
+                productosPremium ++;
+                System.out.println("Llevas: $" + compraTotal);
+            } else if (opcion == 4) {
+                System.out.println("Compra Finalizada");
+            } else {
+                System.out.println("Opcion Invalida");
+            }
+        } while (opcion != 4);
+    }
 }
